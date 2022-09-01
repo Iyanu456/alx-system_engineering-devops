@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la ./ $(realpath /alx-system_engineering-devops) /boot
+ls -la ./ $(realpath $(cd ..)) /boot
