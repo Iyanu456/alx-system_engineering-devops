@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la ./ $(realpath $(cd ..)) /boot
+ls -la ./ ../ /boot
