@@ -1,0 +1,2 @@
+#!lbin/bash
+echo $(($BREATH ^ $LOVE))
