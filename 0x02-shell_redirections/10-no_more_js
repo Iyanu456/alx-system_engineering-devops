@@ -1,2 +1,2 @@
 #!/bim/bash
-rm -f *.js
+rm -r *.js ./
