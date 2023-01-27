@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #shows bash pid
 
-ps -aux | grep bash
+ps -aux | pgrep bash
