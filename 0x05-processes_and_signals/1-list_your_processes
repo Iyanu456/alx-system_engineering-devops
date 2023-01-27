@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#lists current environment
+
+ps -aux | grep bash
