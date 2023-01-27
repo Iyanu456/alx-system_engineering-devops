@@ -2,7 +2,7 @@
 # Displays "To infinity and beyond"
 
 while true
-do
+do 
 	echo "To infinity and beyond"
 	sleep 2
 done
