@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 #lists current environment
-#spellcheck disable=SC2009
 
-ps -aux
+ps -auxf
