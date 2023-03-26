@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#config file tothat allows a user to connect to a server without a password
+Host *
+	IdentifyFile ~/.ssh/school
+	PasswordAuthentication no
