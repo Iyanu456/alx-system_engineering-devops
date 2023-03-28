@@ -1,5 +1,13 @@
 #!/bin/bash
 chmod 777 *
+MESSAGE="$*"
 git add .
-git commit -m "default message"
+if [ $# -eq 0 ]
+then
+	git commit -m "default message"
+else 
+	git commit -m "$MESSAGE"
+fi
 git push
+echo 'Files have been successfully pushed to github'
+
