@@ -1,0 +1,11 @@
+#!/bin/bash
+MESSAGE="$*"
+git add .
+if [ $# -eq 0 ]
+then
+	git commit -m "default message"
+else 
+	git commit -m "$MESSAGE"
+fi
+git push
+echo 'Files have been successfully pushed to github'
