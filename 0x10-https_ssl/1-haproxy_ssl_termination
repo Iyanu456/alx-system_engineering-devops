@@ -38,17 +38,11 @@ defaults
 	errorfile 503 /etc/haproxy/errors/503.http
 	errorfile 504 /etc/haproxy/errors/504.http
 
-frontend www-http
-	   bind *:80
-	      reqadd X-Forwarded-Proto:\ http
-	          default_backend www-backend
-
-frontend www-https
-	   bind *:443 ssl crt /etc/ssl/www.fraol.tech/www.fraol.tech.pem
-	      reqadd X-Forwarded-Proto:\ https
-	          acl letsencrypt-acl path_beg /.well-known/acme-challenge/
-		       use_backend letsencrypt-backend if letsencrypt-acl
-		             default_backend www-backend
+frontend www-frontend
+    sudo curl -o /etc/haproxy/ssl/www.crt https://github.com/Iyanu456/alx-system_engineering-devops/blob/master/0x10-https_ssl/private/www.crt
+    bind *:443 ssl crt /etc/haproxy/ssl/www.crt
+    http-request setx-header X-Forwarded-Proto https if { ssl_fc }
+    default_backend www-backend
 
 backend www-backend
 	redirect scheme https if !{ ssl_fc }
