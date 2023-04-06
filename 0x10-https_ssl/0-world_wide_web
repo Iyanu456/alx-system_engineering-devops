@@ -1,4 +1,4 @@
-B#!/usr/bin/env bash
+#!/usr/bin/env bash
 #Configure your domain zone so that the subdomain www and display information about subdomains
 
 if [ "$#" = 1 ]
