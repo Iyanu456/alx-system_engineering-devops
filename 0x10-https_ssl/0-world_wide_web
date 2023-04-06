@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Configure your domain zone so that the subdomain www and display information about subdomains
 
-function ()
+new_function ()
 {
     if [ "$#" = 1 ]
     then
@@ -19,4 +19,4 @@ function ()
         echo "The subdomain $2 is a $record_type record and points to $destination"
     fi
 }
-function
+new_function $*
