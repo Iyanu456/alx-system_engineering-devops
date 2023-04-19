@@ -1,33 +1,10 @@
-#!/usr/bin/env bash
-#install ngix and have a file that returns the string "Hello World  inside
-
-sudo apt-get update -y && \
+#!/bin/bash
+# Installs Nginx with specific configurations
+sudo apt-get update
 sudo apt-get install -y nginx
-if [ $? -eq 0 ]
-then
-    echo -e \
-"http {
-    root /var/www/school;
-    index index.html;
-    server {
-        listen 80;
-        location \ {
-        }
-    }
-}
-events {
-}" > /etc/nginx/nginx.conf
-    mkdir -p /var/www/school
-    echo "Hello World!" > \
-    /var/www/school/index.html
-    service nginx start
-    if [ $? -ne 0 ]
-    then
-    "Problem starting nginx"
-    exit 1
-    fi
-else
-    echo "Could not install nginx"
-    exit 1
-fi
-exit 0
+
+sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
+echo "Nginx installed and configured to listen on port 80. Root URL returns 'Hello World!'"
