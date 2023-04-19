@@ -1,10 +1,24 @@
-#!/usr/bin/env bash
-# Installs Nginx with specific configurations
-sudo apt-get update
-sudo apt-get install -y nginx
+#!/bin/bash
 
-sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+# Install nginx
+apt-get update
+apt-get -y install nginx
 
-sudo service nginx restart
-echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html > /dev/null
-echo "Nginx installed and configured to listen on port 80. Root URL returns 'Hello World!'"
+# Configure nginx to listen on port 80 and serve "Hello World!" on root request
+echo "server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+        index index.html index.htm;
+
+        server_name _;
+
+        location / {
+                try_files \$uri \$uri/ =404;
+                echo 'Hello World!';
+        }
+}" > /etc/nginx/sites-available/default
+
+# Restart nginx
+service nginx restart
