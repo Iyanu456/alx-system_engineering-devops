@@ -17,7 +17,7 @@ if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/todos"
     todos = requests.get(url, verify=False).json()
     [u_doc.get(todo.get("userId")).append({"task": todo.get("title"),
-                                       "completed": todo.get("completed"),
+     "completed": todo.get("completed"),
                                        "username": un_doc.get(
                                                todo.get("userId"))})
      for todo in todos]
