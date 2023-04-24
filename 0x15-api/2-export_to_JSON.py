@@ -15,8 +15,8 @@ if __name__ == '__main__':
     todos = requests.get(url, verify=False).json()
     name = user.get('username')
     todo = [{"task": todo.get("title"),
-          "username": name,
-          "completed": todo.get("completed")} for todo in todos]
+            "username": name,
+             "completed": todo.get("completed")} for todo in todos]
     obj = {}
     obj[uid] = todo
     with open("{}.json".format(uid), 'w') as filejs:
