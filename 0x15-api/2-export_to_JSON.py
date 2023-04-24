@@ -14,10 +14,10 @@ if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(uid)
     todos = requests.get(url, verify=False).json()
     name = user.get('username')
-    todo = [{"task": t.get("title"),
+    todo = [{"task": todo.get("title"),
           "username": name,
-          "completed": t.get("completed")} for todo in todos]
+          "completed": todo.get("completed")} for todo in todos]
     obj = {}
     obj[uid] = todo
     with open("{}.json".format(uid), 'w') as filejs:
-        json.dump(bj, filejs)
+        json.dump(obj, filejs)
