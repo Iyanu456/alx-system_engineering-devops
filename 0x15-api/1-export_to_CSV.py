@@ -16,7 +16,7 @@ if __name__ == '__main__':
     todos = requests.get(url, verify=False).json()
     with open("{}.csv".format(uid), 'w', newline='') as csvfile:
         task_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for t in todo:
+        for t in todos:
             task_writer.writerow([int(uid), user.get('username'),
                                  t.get('completed'),
                                  t.get('title')])
